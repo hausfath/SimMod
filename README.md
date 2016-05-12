@@ -1,5 +1,7 @@
 # SimMod - Python Simple Climate Model
 
+![SimMod vs. CMIP5](http://i81.photobucket.com/albums/j237/hausfath/simmod%20cmip5%20temperature%20comparison_zpspsk0ypva.png)
+
 ## Usage
 1. Open simmod_controller.py in your editing tool of choice
 2. Select desired parameters for RCP, carbon model, climate sensitivity, etc.
