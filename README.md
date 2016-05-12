@@ -21,10 +21,8 @@ is recommended for the time being.
 The latest BEAM model can be found here: https://github.com/RDCEP/BEAM-carbon/find/master
 
 ##CSV Output Legend
-MODEL INPUTS/DIAGNOSTIC VALUES
-
+MODEL INPUTS/DIAGNOSTIC VALUES \n
 date - Count of timesteps since specified run_start_year
-
 year - Calendar Year
 co2_pg - Emissions of CO2 by timestep from selected RCP
 ch4_tg - Emissions of CH4 by timestep from selected RCP
