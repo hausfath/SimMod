@@ -16,4 +16,10 @@ This will be fixed in the near future.
 
 The BEAM carbon model overestimates 2100 atmospheric CO2 concentrations
 by ~25% relative to RCP scenarios. Using the pulse response carbon model
-is recommended for the time being.# SimMod
+is recommended for the time being.
+
+The latest BEAM model can be found here: https://github.com/RDCEP/BEAM-carbon/find/master
+
+## License
+This code is distributed under the Apache 2 License.
+
