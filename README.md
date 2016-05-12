@@ -21,39 +21,71 @@ is recommended for the time being.
 The latest BEAM model can be found here: https://github.com/RDCEP/BEAM-carbon/find/master
 
 ##CSV Output Legend
-MODEL INPUTS/DIAGNOSTIC VALUES \n
+MODEL INPUTS/DIAGNOSTIC VALUES
+
 date - Count of timesteps since specified run_start_year
+
 year - Calendar Year
+
 co2_pg - Emissions of CO2 by timestep from selected RCP
+
 ch4_tg - Emissions of CH4 by timestep from selected RCP
+
 n2o_tg - Emissions of N20 by timestep from selected RCP
+
 co2_forcing_rcp - Radiative forcing of CO2 in selected RCP; for comparison purposes
+
 ch4_forcing_rcp - Radiative forcing of CH4 in selected RCP; for comparison purposes
+
 n2o_forcing_rcp - Radiative forcing of N2O in selected RCP; for comparison purposes
+
 total_forcing_rcp - Total radiative forcing in selected RCP; for comparison purposes
+
 rcp_co2_ppm - CO2 ppm in selected RCP; for comparison purposes
+
 rcp_ch4_ppb - CH4 ppm in selected RCP; for comparison purposes
+
 rcp_n2o_ppb - N2O ppm in selected RCP; for comparison purposes
 
+
 MODEL OUTPUTS
+
 co2_pg_atm - Atmospheric CO2 concentration (in Pg CO2)
+
 ch4_tg_atm - Atmospheric CH4 concentration (in Tg CH4)
+
 n2o_tg_atm - Atmospheric N2O concentration (in Tg N2O)
+
 co2_step - Intermediate value; ignore (will remove)
+
 ch4_step - Intermediate value; ignore (will remove)
+
 n2o_step - Intermediate value; ignore (will remove)
+
 ch4_co2_decay - CO2 (Pg) from CH4 oxidation
+
 co2_ppm - Parts per million CO2
+
 ch4_ppb - Parts per billion CH4
+
 n2o_ppb - Parts per billion N2O
+
 co2_forcing - Radiative forcing (watts/m^2) from CO2
+
 ch4_forcing - Radiative forcing (watts/m^2) from CH4
+
 n2o_forcing - Radiative forcing (watts/m^2) from N2O
+
 total_forcing_ghg - Total radiative forcing from GHGs
+
 rcp_nonghg_forcing - Non-GHG radiative forcing (taken from RCP)
+
 total_forcing - Sum of GHG and non-GHG forcing
+
 t_os - Aquaworld transient temperature response (no land fraction)
+
 t_eq - Equilibrium temperature reponse (no oceans)
+
 t_s - Transient temperature response (land/ocean)
 
 ## License
