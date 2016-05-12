@@ -1,5 +1,5 @@
 # SimMod - Python Simple Climate Model
-
+Version 0.1 (Alpha - may contain bugs!)
 ![SimMod vs. CMIP5](http://i81.photobucket.com/albums/j237/hausfath/simmod%20cmip5%20temperature%20comparison_zpspsk0ypva.png)
 
 ## Usage
