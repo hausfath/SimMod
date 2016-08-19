@@ -13,10 +13,10 @@ from heat_diffusion import continuous_diffusion_model
 run_start_year = 1765.          #Run start year
 run_end_year = 2100.            #Inclusive of end year
 dt = 1 #/ 100.                  #years
-rcp = '2.6'                     #RCP scenario
+rcp = '8.5'                     #RCP scenario
 carbon_model = 'pulse response' #'pulse response', 'box diffusion', or 'BEAM'
 normalize_2000_conc = True      #Normalize concentrations to historical year-2000 values
-LAMBDA = 1.25                   #Climate sensativity (T = F / LAMBDA)
+c_sens = 1.25                   #Climate sensativity (T = F / LAMBDA)
 
 #BEAM Model Settings (when relevant)
 SUBSTEPS = 100                  #Break each timestep into this many substeps
@@ -29,13 +29,14 @@ MIXING = 'probable'             #options 'fast', 'slow', or 'probable'
 DZ = 100                        #meters - thickness of each layer in the deep ocean
 
 
-def run_simmod(run_start_year, run_end_year, dt, rcp, add_year = 0, c_add = 0, ch4_add = 0, n2o_add = 0):
+def run_simmod(run_start_year, run_end_year, dt, rcp, c_sens, add_start = 0, 
+               add_end = 0, c_add = 0, ch4_add = 0, n2o_add = 0):
     """
     Run the various parts of SimMod and export images and CSV files.
     """
     run_years = (run_end_year - run_start_year + 1)
-    emission_vals = emissions(run_start_year, run_end_year, dt, rcp, add_year, c_add, ch4_add, n2o_add)
-
+    emission_vals = emissions(run_start_year, run_end_year, dt, rcp, 
+                              add_start, add_end, c_add, ch4_add, n2o_add)
     conc = pulse_decay_runner(run_years, dt, emission_vals)
 
     if carbon_model == 'BEAM':
@@ -73,8 +74,11 @@ def run_simmod(run_start_year, run_end_year, dt, rcp, add_year = 0, c_add = 0, c
         )
 
     forcing = calc_radiative_forcing(conc)
-    warming = continuous_diffusion_model(forcing, run_years, dt, LAMBDA)
+    warming = continuous_diffusion_model(forcing, run_years, dt, c_sens)
     return warming
 
-results = run_simmod(run_start_year, run_end_year, dt, rcp)
+#results = run_simmod(run_start_year, run_end_year, dt, rcp, add_type = 'continuous', add_year = 2000, c_add = 100)
+
+results = run_simmod(run_start_year, run_end_year, dt, rcp, c_sens)
+#print results[['year', 'total_forcing']][1990-1765:999999]
 results.to_csv('results/simmod_run_'+rcp+' '+carbon_model+'.csv')

@@ -35,6 +35,12 @@ def calc_radiative_forcing(concentrations):
          concentrations['n2o_forcing_rcp'])
     )
 
+    concentrations['historic_nonghg_forcings'] = (
+        concentrations['hist_forcing_wm2'] - concentrations['total_forcing_ghg']
+    )
+
+    concentrations.loc[concentrations['year'] < 2000, 'rcp_nonghg_forcing'] = concentrations['historic_nonghg_forcings']
+
     concentrations['rcp_nonghg_forcing'].fillna(0., inplace=True)
     concentrations['total_forcing'] = (
         concentrations['total_forcing_ghg'] + 

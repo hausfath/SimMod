@@ -3,7 +3,8 @@ import numpy as np
 from constants import *
 
 
-def emissions(run_start_year, run_end_year, dt, rcp, add_year = 0, c_add = 0, ch4_add = 0, n2o_add = 0):
+def emissions(run_start_year, run_end_year, dt, rcp, add_start = 0, 
+              add_end = 0, c_add = 0, ch4_add = 0, n2o_add = 0):
     """
     Take annual emissions from a RCP scenario and return
     emissions by specified start date, end date, and time step
@@ -14,10 +15,17 @@ def emissions(run_start_year, run_end_year, dt, rcp, add_year = 0, c_add = 0, ch
     emissions = rcp_emissions.append(historic_emissions, ignore_index=True)
     emissions.sort(columns='year', inplace=True)
     emissions.reset_index(inplace=True)
-    if add_year > 0:
-        emissions['c_emissions_pg'][(add_year - 1765)] += c_add
-        emissions['ch4_emissions_tg'][(add_year - 1765)] += ch4_add
-        emissions['n2o_emissions_tg'][(add_year - 1765)] += n2o_add
+    if add_start > 0:
+        emissions.loc[(
+            (emissions['year'] >= add_start) & (emissions['year'] <= add_end), 
+            'c_emissions_pg')] = emissions['c_emissions_pg'] + c_add
+        emissions.loc[(
+            (emissions['year'] >= add_start) & (emissions['year'] <= add_end), 
+            'ch4_emissions_tg')] = emissions['ch4_emissions_tg'] + ch4_add
+        emissions.loc[(
+            (emissions['year'] >= add_start) & (emissions['year'] <= add_end), 
+            'n2o_emissions_tg')] = emissions['n2o_emissions_tg'] + n2o_add
+    
     total_years = emissions.shape[0]
     subset = emissions[int(run_start_year - 1765):int(run_end_year - 1765 + 1)]
     subset.reset_index(inplace=True)
@@ -31,6 +39,7 @@ def emissions(run_start_year, run_end_year, dt, rcp, add_year = 0, c_add = 0, ch
         df.ix[t, 'co2_pg'] = subset['c_emissions_pg'][int(df['date'][t])] * dt * C_TO_CO2
         df.ix[t, 'ch4_tg'] = subset['ch4_emissions_tg'][int(df['date'][t])] * dt
         df.ix[t, 'n2o_tg'] = subset['n2o_emissions_tg'][int(df['date'][t])] * dt
+        df.ix[t, 'hist_forcing_wm2'] = subset['hist_forcing_wm2'][int(df['date'][t])]
         df.ix[t, 'co2_forcing_rcp'] = subset['co2_forcing_wm2'][int(df['date'][t])]
         df.ix[t, 'ch4_forcing_rcp'] = subset['ch4_forcing_wm2'][int(df['date'][t])]
         df.ix[t, 'n2o_forcing_rcp'] = subset['n2o_forcing_wm2'][int(df['date'][t])]
