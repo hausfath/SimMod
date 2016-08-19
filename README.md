@@ -1,6 +1,6 @@
 # SimMod - Python Simple Climate Model
 Version 0.2 (Alpha - may contain bugs!)
-![SimMod vs. CMIP5](https://s3.postimg.io/oip6fzbcj/simmod_cmip5_temperature_comparison_python.png)
+![SimMod vs. CMIP5](https://s3.postimg.org/qhll0hqqb/simmod_cmip5_temperature_comparison_python.png)
 
 ## Usage
 0. Make sure you have numpy and pandas installed.
