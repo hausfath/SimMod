@@ -57,9 +57,7 @@ ch4_tg_atm - Atmospheric CH4 concentration (in Tg CH4)
 
 n2o_tg_atm - Atmospheric N2O concentration (in Tg N2O)
 
-ch4_co2_decay_marginal - Total CO2 from decaying CH4 (in Pg) for each year
-
-ch4_co2_decay - CO2 (Pg) from CH4 oxidation
+ch4_co2_decay_marginal - Additional CO2 from oxidation of CH4 (in Pg)
 
 co2_ppm - Parts per million CO2
 
