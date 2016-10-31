@@ -57,11 +57,7 @@ ch4_tg_atm - Atmospheric CH4 concentration (in Tg CH4)
 
 n2o_tg_atm - Atmospheric N2O concentration (in Tg N2O)
 
-co2_step - Intermediate value; ignore (will remove)
-
-ch4_step - Intermediate value; ignore (will remove)
-
-n2o_step - Intermediate value; ignore (will remove)
+ch4_co2_decay_marginal - Total CO2 from decaying CH4 (in Pg) for each year
 
 ch4_co2_decay - CO2 (Pg) from CH4 oxidation
 
