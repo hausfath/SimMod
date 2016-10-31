@@ -29,7 +29,7 @@ MIXING = 'probable'             #options 'fast', 'slow', or 'probable'
 DZ = 100                        #meters - thickness of each layer in the deep ocean
 
 
-def run_simmod(run_start_year, run_end_year, dt, rcp, c_sens, add_start = 0, 
+def run_simmod(run_start_year, run_end_year, dt, rcp, c_sens = c_sens, add_start = 0, 
                add_end = 0, c_add = 0, ch4_add = 0, n2o_add = 0):
     """
     Run the various parts of SimMod and export images and CSV files.
@@ -77,8 +77,5 @@ def run_simmod(run_start_year, run_end_year, dt, rcp, c_sens, add_start = 0,
     warming = continuous_diffusion_model(forcing, run_years, dt, c_sens)
     return warming
 
-#results = run_simmod(run_start_year, run_end_year, dt, rcp, add_type = 'continuous', add_year = 2000, c_add = 100)
-
 results = run_simmod(run_start_year, run_end_year, dt, rcp, c_sens)
-#print results[['year', 'total_forcing']][1990-1765:999999]
 results.to_csv('results/simmod_run_'+rcp+' '+carbon_model+'.csv')
